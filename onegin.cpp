@@ -8,6 +8,7 @@ void InitStringMatrix(char** data, const size_t size);
 void PrintStringMatrix(char** data, const size_t size);
 void GetFromFile(char** onegin, FILE* poem, size_t length);
 size_t NumLines(const char* filename);
+int compare(const void* n1, const void* n2);
 
 int main()
 {
@@ -19,11 +20,16 @@ int main()
     assert(poem != NULL);
     GetFromFile(sortpoem, poem, length);
 
-    //qsort(sortpoem, sizeof(poem), )
+    PrintStringMatrix(sortpoem, length);
+    printf("\n");
+
+    qsort(sortpoem, length, sizeof(sortpoem[-1]), compare);
 
     PrintStringMatrix(sortpoem, length);
-    free(sortpoem);
-    fclose(poem);
+    for (size_t i = 0; i < length; i++)
+    {
+        free(sortpoem[i]);
+    }    fclose(poem);
 }
 
 void GetFromFile(char** onegin, FILE* poem, size_t length)
@@ -68,5 +74,12 @@ size_t NumLines(const char* filename)
     }
     fclose(file);
     return lines;
+}
+
+int compare(const void* n1, const void* n2)
+{
+    const char* s1 = *(const char**)n1;
+    const char* s2 = *(const char**)n2;
+    return strcmp(s1, s2);
 }
 
