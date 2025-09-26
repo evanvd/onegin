@@ -9,7 +9,6 @@
 
 int main()
 {
-    //size_t length = NumLines("poem.txt");
     poem_t onegin =
     {
         onegin.length = NumLines("poem.txt"),
@@ -30,13 +29,6 @@ int main()
     
     PoemDestroy(&onegin);
     
-    // for (size_t i = 0; i < onegin.length; i++)
-    // {
-    //     free(onegin.sort_poem[i]);
-    // }
-    
-    free(onegin.sort_poem);
-
     fclose(onegin.file);
     return 0;
 }
