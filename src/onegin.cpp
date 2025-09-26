@@ -28,7 +28,12 @@ int main()
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
-    //PoemDestroy(&onegin);
+    PoemDestroy(&onegin);
+    
+    // for (size_t i = 0; i < onegin.length; i++)
+    // {
+    //     free(onegin.sort_poem[i]);
+    // }
     
     free(onegin.sort_poem);
 

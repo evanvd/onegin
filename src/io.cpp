@@ -45,5 +45,4 @@ void PoemDestroy(poem_t* onegin)
     {
         free(onegin->sort_poem[i]);
     }
-    //onegin->sort_poem = NULL;
 }
