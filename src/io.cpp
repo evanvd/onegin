@@ -13,12 +13,12 @@ void PrintStringMatrix(char** data, const size_t size)
     }
 }
 
-void GetFromFile(char** onegin, FILE* poem, size_t length)
+void GetFromFile(poem_t* poem)
 {
     size_t buffer_size = 0;
-    for (size_t index = 0; index < length; index++)
+    for (size_t index = 0; index < poem->length; index++)
     {
-        getline(&onegin[index], &buffer_size, poem);
+        getline(&poem->sort_poem[index], &buffer_size, poem->file);
         //onegin[index] = strdup(temp);
     }
 }

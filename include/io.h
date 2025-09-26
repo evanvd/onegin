@@ -12,6 +12,6 @@ struct poem_t
 };
 
 void PrintStringMatrix(char** data, const size_t size);
-void GetFromFile(char** onegin, FILE* poem, size_t length);
+void GetFromFile(poem_t* poem);
 size_t NumLines(const char* filename);
 void PoemDestroy(poem_t* onegin);

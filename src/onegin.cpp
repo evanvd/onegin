@@ -18,7 +18,7 @@ int main()
     };
     
     assert(onegin.file != NULL);
-    GetFromFile(onegin.sort_poem, onegin.file, onegin.length);
+    GetFromFile(&onegin);
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     printf("\n");
