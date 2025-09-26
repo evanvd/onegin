@@ -48,3 +48,13 @@ void PoemDestroy(poem_t* onegin)
     free(onegin->sort_poem);
 
 }
+
+bool search_flag(int argc, char** argv, const char* flags)
+{
+    for (int num_flags = 1; num_flags < argc; num_flags++)
+    if (strcmp(argv[num_flags], flags) == 0)
+    {
+        return true;
+    }
+    return false;
+}

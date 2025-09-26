@@ -26,3 +26,8 @@ $(PREF_OBJ)%.o : $(PREF_SRC)%.cpp
 clean:
 	rm -f $(TARGET) $(PREF_OBJ)*.o
 
+qsort:
+	./$(TARGET) --qsort
+
+bubble:
+	./$(TARGET) --bubble

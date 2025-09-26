@@ -7,3 +7,4 @@
 
 int compare(const void* n1, const void* n2);
 void BubbleSort(char** data, size_t length);
+void swap(char* string1, char *string2);

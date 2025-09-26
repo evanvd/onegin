@@ -5,10 +5,10 @@
 #include <string.h>
 #include "sort.h"
 
-
-
-int main()
+int main(int argc, char **argv)
 {
+    // TODO enter filename from console/CLI args/local const variable
+    const char* filename = "poem.txt";
     poem_t onegin =
     {
         onegin.length = NumLines("poem.txt"),
@@ -16,14 +16,22 @@ int main()
         onegin.file = fopen("poem.txt", "r")
     };
     
-    assert(onegin.file != NULL);
+    assert(onegin.file != NULL); // use if
     GetFromFile(&onegin);
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     printf("\n");
 
-    //qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
-    BubbleSort(onegin.sort_poem, onegin.length);
+    if (search_flag(argc, argv, "--qsort"))
+    {
+        qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
+
+    }
+    if (search_flag(argc, argv, "--bubble"))
+    {
+        BubbleSort(onegin.sort_poem, onegin.length);
+    }
+    
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
@@ -32,4 +40,3 @@ int main()
     fclose(onegin.file);
     return 0;
 }
-

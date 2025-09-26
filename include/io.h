@@ -15,3 +15,4 @@ void PrintStringMatrix(char** data, const size_t size);
 void GetFromFile(poem_t* poem);
 size_t NumLines(const char* filename);
 void PoemDestroy(poem_t* onegin);
+bool search_flag(int argc, char** argv, const char* flags);
