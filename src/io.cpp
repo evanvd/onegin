@@ -39,10 +39,11 @@ size_t NumLines(const char* filename)
     return lines;
 }
 
-void PoemDestroy(file onegin)
+void PoemDestroy(file* onegin)
 {
-    for (size_t i = 0; i < onegin.length; i++)
-    {
-        free(onegin.sort_poem[i]);
-    }
+    //for (size_t i = 0; i < onegin->length; i++)
+    //{
+        free(onegin->sort_poem);
+    //}
+    //onegin->sort_poem = NULL;
 }

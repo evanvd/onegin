@@ -13,4 +13,4 @@ struct file
 void PrintStringMatrix(char** data, const size_t size);
 void GetFromFile(char** onegin, FILE* poem, size_t length);
 size_t NumLines(const char* filename);
-void PoemDestroy(file onegin);
+void PoemDestroy(file* onegin);

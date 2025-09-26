@@ -3,7 +3,6 @@
 #include <ctype.h>
 #include <assert.h>
 #include <string.h>
-//#include "io.h"
 #include "sort.h"
 
 
@@ -23,12 +22,14 @@ int main()
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     printf("\n");
 
-    //qsort(sortpoem, length, sizeof(sortpoem[-1]), compare);
+    //qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
     BubbleSort(onegin.sort_poem, onegin.length);
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
-    PoemDestroy(onegin);
+    PoemDestroy(&onegin);
+    
+
 
     fclose(poem);
     return 0;
