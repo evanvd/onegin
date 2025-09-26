@@ -10,14 +10,15 @@
 int main()
 {
     //size_t length = NumLines("poem.txt");
-    file onegin;
+    poem_t onegin =
+    {
+        onegin.length = NumLines("poem.txt"),
+        onegin.sort_poem = (char**)calloc(onegin.length, sizeof(char*)),
+        onegin.file = fopen("poem.txt", "r")
+    };
     
-    onegin.length = NumLines("poem.txt");
-    onegin.sort_poem = (char**)calloc(onegin.length, sizeof(char*));
-
-    FILE* poem = fopen("poem.txt", "r");
-    assert(poem != NULL);
-    GetFromFile(onegin.sort_poem, poem, onegin.length);
+    assert(onegin.file != NULL);
+    GetFromFile(onegin.sort_poem, onegin.file, onegin.length);
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     printf("\n");
@@ -27,11 +28,11 @@ int main()
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
-    PoemDestroy(&onegin);
+    //PoemDestroy(&onegin);
     
+    free(onegin.sort_poem);
 
-
-    fclose(poem);
+    fclose(onegin.file);
     return 0;
 }
 
