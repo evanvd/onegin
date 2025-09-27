@@ -19,14 +19,14 @@ void swap(char** string1, char** string2)
     *string2 = temp;
 }
 
-void BubbleSort(char** data, size_t length) 
+void BubbleSort(char** data, size_t length, comparison_fn_t __compar) 
 {
 
     for (size_t attempt = 0; attempt < length - 1; attempt++)
     {
         for (size_t index = 0; index < length - attempt - 1; index++)
         {
-            if (strcmp(data[index], data[index + 1]) > 0)
+            if (__compar(data[index], data[index + 1]) > 0)
             {
                 swap(&data[index], &data[index + 1]);
             }
