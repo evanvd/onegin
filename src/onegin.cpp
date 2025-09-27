@@ -30,6 +30,18 @@ int main(int argc, char **argv)
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     printf("\n\n\n\n");
 
+    comparison_fn_t compare = LastLetterCompare; // Tipa default compare
+
+    if (SearchFlag(argc,argv,"--first"))
+    {
+        compare = FirstLetterCompare;
+    }
+
+    if (SearchFlag(argc,argv,"--last"))
+    {
+        compare = LastLetterCompare;
+    }
+
     if (SearchFlag(argc, argv, "--qsort"))
     {
         qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
@@ -39,7 +51,6 @@ int main(int argc, char **argv)
     {
         BubbleSort((void**)onegin.sort_poem, onegin.length, compare);
     }
-    
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
