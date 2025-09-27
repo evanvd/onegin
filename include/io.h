@@ -11,8 +11,16 @@ struct poem_t
     FILE* file = NULL;
 };
 
+enum poem_err
+{
+    ERR = 0,
+    NoErr = 1,
+    FileNull = 2,
+};
+
+poem_err InitPoem(poem_t* data, const char* filename);
 void PrintStringMatrix(char** data, const size_t size);
 void GetFromFile(poem_t* poem);
 size_t NumLines(const char* filename);
 void PoemDestroy(poem_t* onegin);
-bool search_flag(int argc, char** argv, const char* flags);
+bool SearchFlag(int argc, char** argv, const char* flags);

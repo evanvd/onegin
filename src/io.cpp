@@ -19,13 +19,33 @@ void GetFromFile(poem_t* poem)
     for (size_t index = 0; index < poem->length; index++)
     {
         getline(&poem->sort_poem[index], &buffer_size, poem->file);
-        //onegin[index] = strdup(temp);
     }
 }
+
+poem_err InitPoem(poem_t* data, const char* filename)
+{
+    data->length = NumLines(filename);
+    if (data->length == 0) 
+    {
+        return ERR;
+    }
+    data->file = fopen("poem.txt","r");
+    if (data->file == NULL)
+    {
+        data->sort_poem = NULL;
+        return FileNull;
+    }
+
+    data->sort_poem = (char**)calloc(data->length, sizeof(char*));
+    
+    return NoErr;
+}
+
 
 size_t NumLines(const char* filename)
 {
     FILE* file = fopen(filename, "r");
+    assert(file != NULL);
     int ch = 0;
     size_t lines = 0;
     while((ch = fgetc(file)) != EOF)
@@ -49,7 +69,7 @@ void PoemDestroy(poem_t* onegin)
 
 }
 
-bool search_flag(int argc, char** argv, const char* flags)
+bool SearchFlag(int argc, char** argv, const char* flags)
 {
     for (int num_flags = 1; num_flags < argc; num_flags++)
     if (strcmp(argv[num_flags], flags) == 0)

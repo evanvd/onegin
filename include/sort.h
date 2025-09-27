@@ -6,5 +6,5 @@
 #include "io.h"
 
 int compare(const void* n1, const void* n2);
-void BubbleSort(char** data, size_t length);
-void swap(char* string1, char *string2);
+void BubbleSort(char** data, size_t length); // TODO void*
+void swap(char** string1, char** string2);

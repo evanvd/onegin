@@ -7,27 +7,33 @@
 
 int main(int argc, char **argv)
 {
-    // TODO enter filename from console/CLI args/local const variable
     const char* filename = "poem.txt";
-    poem_t onegin =
-    {
-        onegin.length = NumLines("poem.txt"),
-        onegin.sort_poem = (char**)calloc(onegin.length, sizeof(char*)),
-        onegin.file = fopen("poem.txt", "r")
-    };
     
-    assert(onegin.file != NULL); // use if
+    poem_t onegin = {};
+    poem_err err = InitPoem(&onegin, filename);
+
+    switch (err)
+    {
+    case FileNull:
+        printf("FileNull");
+        return 0;
+    case ERR:
+        return 0;
+    default:
+        break;
+    }
+
     GetFromFile(&onegin);
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
-    printf("\n");
+    printf("\n\n\n\n");
 
-    if (search_flag(argc, argv, "--qsort"))
+    if (SearchFlag(argc, argv, "--qsort"))
     {
         qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
 
     }
-    if (search_flag(argc, argv, "--bubble"))
+    if (SearchFlag(argc, argv, "--bubble"))
     {
         BubbleSort(onegin.sort_poem, onegin.length);
     }

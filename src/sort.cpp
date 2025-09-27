@@ -7,8 +7,8 @@
 
 int compare(const void* n1, const void* n2)
 {
-    const char* string1 = *(const char**)n1; // TODO rename
-    const char* string2 = *(const char**)n2; // TODO rename
+    const char* string1 = *(const char**)n1; 
+    const char* string2 = *(const char**)n2; 
     return strcmp(string1, string2);
 }
 
@@ -19,7 +19,7 @@ void swap(char** string1, char** string2)
     *string2 = temp;
 }
 
-void BubbleSort(char** data, size_t length)
+void BubbleSort(char** data, size_t length) 
 {
 
     for (size_t attempt = 0; attempt < length - 1; attempt++)
