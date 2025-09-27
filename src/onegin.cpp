@@ -19,6 +19,8 @@ int main(int argc, char **argv)
         return 0;
     case ERR:
         return 0;
+    case NoErr:
+        break;
     default:
         break;
     }
@@ -35,7 +37,7 @@ int main(int argc, char **argv)
     }
     if (SearchFlag(argc, argv, "--bubble"))
     {
-        BubbleSort(onegin.sort_poem, onegin.length);
+        BubbleSort((void**)onegin.sort_poem, onegin.length, compare);
     }
     
 

@@ -6,7 +6,7 @@
 
 struct poem_t
 {
-    size_t length = -1;
+    size_t length = 0;
     char** sort_poem = NULL;
     FILE* file = NULL;
 };
