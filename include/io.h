@@ -14,7 +14,7 @@ struct poem_t
 
 enum poem_err
 {
-    BadFilenameErr = 0, // TODO what is that?
+    BadFilenameErr = 0, // TODO add some check
     NoErr = -1,
     FileNull = 1,
 };
@@ -22,6 +22,7 @@ enum poem_err
 poem_err InitPoem(poem_t* data, const char* filename);
 void PrintStringMatrix(char** data, const size_t size);
 void GetFromFile(poem_t* poem);
+void PoemDup(char** data, char** duplicate, size_t length);
 size_t NumLines(const char* filename);
 void PoemDestroy(poem_t* onegin);
 bool SearchFlag(int argc, char** argv, const char* flags);

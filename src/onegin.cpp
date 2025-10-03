@@ -18,7 +18,8 @@ int main(int argc, char **argv)
         printf("FileNull");
         return 0;
     case BadFilenameErr:
-        return 0; // TODO print error
+        printf("BadFilename");
+        return 0;
     case NoErr:
         break;
     default:
@@ -27,23 +28,23 @@ int main(int argc, char **argv)
 
     GetFromFile(&onegin);
 
-    PrintStringMatrix(onegin.sort_poem, onegin.length);
-    printf("\n\n\n\n");
 
     comparison_fn_t compare = StrcmpComparator;
 
     qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
+    
+    PrintStringMatrix(onegin.sort_poem,onegin.length);
 
     compare = ReverseStrcmpComparator;
 
-    PrintStringMatrix(onegin.sort_poem,onegin.length);
-
     BubbleSort((void**)onegin.sort_poem, onegin.length, compare); 
 
+    printf("\n\nREVERSE SORT\n\n");    
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
+    printf("\n\nRAW\n\n");
+
     PrintStringMatrix(onegin.poem, onegin.length);
     PoemDestroy(&onegin);
-    // TODO print(sorted)
     return 0;
 }

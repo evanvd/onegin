@@ -20,6 +20,16 @@ void GetFromFile(poem_t* poem)
     {
         getline(&poem->sort_poem[index], &buffer_size, poem->file);
     }
+    PoemDup(poem->sort_poem, poem->poem, poem->length);
+}
+
+void PoemDup(char** data, char** duplicate, size_t length)
+{
+    for (size_t index = 0; index < length; index++)
+    {
+        duplicate[index] = strdup(data[index]);
+    }
+    
 }
 
 poem_err InitPoem(poem_t* data, const char* filename)
