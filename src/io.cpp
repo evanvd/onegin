@@ -27,7 +27,7 @@ poem_err InitPoem(poem_t* data, const char* filename)
     data->length = NumLines(filename);
     if (data->length == 0) 
     {
-        return ERR;
+        return BadFilenameErr;
     }
     data->file = fopen("poem.txt","r");
     if (data->file == NULL)
@@ -37,7 +37,8 @@ poem_err InitPoem(poem_t* data, const char* filename)
     }
 
     data->sort_poem = (char**)calloc(data->length, sizeof(char*));
-    
+    data->poem = (char**)calloc(data->length, sizeof(char*));
+
     return NoErr;
 }
 
@@ -64,9 +65,12 @@ void PoemDestroy(poem_t* onegin)
     for (size_t i = 0; i < onegin->length; i++)
     {
         free(onegin->sort_poem[i]);
+        free(onegin->poem[i]);
     }
     free(onegin->sort_poem);
-
+    free(onegin->poem);
+    fclose(onegin->file);
+    onegin->file = NULL;    
 }
 
 bool SearchFlag(int argc, char** argv, const char* flags)

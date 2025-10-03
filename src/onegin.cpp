@@ -17,8 +17,8 @@ int main(int argc, char **argv)
     case FileNull:
         printf("FileNull");
         return 0;
-    case ERR:
-        return 0;
+    case BadFilenameErr:
+        return 0; // TODO print error
     case NoErr:
         break;
     default:
@@ -30,32 +30,20 @@ int main(int argc, char **argv)
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     printf("\n\n\n\n");
 
-    comparison_fn_t compare = LastLetterCompare; // Tipa default compare
+    comparison_fn_t compare = StrcmpComparator;
 
-    if (SearchFlag(argc,argv,"--first"))
-    {
-        compare = FirstLetterCompare;
-    }
+    qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
 
-    if (SearchFlag(argc,argv,"--last"))
-    {
-        compare = LastLetterCompare;
-    }
+    compare = ReverseStrcmpComparator;
 
-    if (SearchFlag(argc, argv, "--qsort"))
-    {
-        qsort(onegin.sort_poem, onegin.length, sizeof(onegin.sort_poem[-1]), compare);
+    PrintStringMatrix(onegin.sort_poem,onegin.length);
 
-    }
-    if (SearchFlag(argc, argv, "--bubble"))
-    {
-        BubbleSort((void**)onegin.sort_poem, onegin.length, compare);
-    }
+    BubbleSort((void**)onegin.sort_poem, onegin.length, compare); 
 
     PrintStringMatrix(onegin.sort_poem, onegin.length);
     
+    PrintStringMatrix(onegin.poem, onegin.length);
     PoemDestroy(&onegin);
-    
-    fclose(onegin.file);
+    // TODO print(sorted)
     return 0;
 }

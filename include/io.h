@@ -7,15 +7,16 @@
 struct poem_t
 {
     size_t length = 0;
+    char** poem = NULL;
     char** sort_poem = NULL;
     FILE* file = NULL;
 };
 
 enum poem_err
 {
-    ERR = 0,
-    NoErr = 1,
-    FileNull = 2,
+    BadFilenameErr = 0, // TODO what is that?
+    NoErr = -1,
+    FileNull = 1,
 };
 
 poem_err InitPoem(poem_t* data, const char* filename);

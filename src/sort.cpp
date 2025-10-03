@@ -5,14 +5,14 @@
 #include <string.h>
 #include "sort.h"
 
-int FirstLetterCompare(const void* n1, const void* n2)
+int StrcmpComparator(const void* n1, const void* n2)
 {
     const char* string1 = *(const char**)n1; 
     const char* string2 = *(const char**)n2; 
     return strcmp(string1, string2);
 }
 
-int LastLetterCompare(const void* n1, const void* n2)
+int ReverseStrcmpComparator(const void* n1, const void* n2)
 {
     const char* string1 = *(const char**)n1; 
     const char* string2 = *(const char**)n2; 
@@ -43,7 +43,6 @@ void BubbleSort(void** data, size_t length, comparison_fn_t comparator)
     {
         for (size_t index = 0; index < length - attempt - 1; index++)
         {
-
             if (comparator(&data[index], &data[index + 1]) > 0)
             {
                 swap(&data[index], &data[index + 1]);
